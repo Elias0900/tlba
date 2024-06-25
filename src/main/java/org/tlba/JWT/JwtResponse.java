@@ -11,7 +11,6 @@ public class JwtResponse {
 
     public JwtResponse(String jwtToken) {
         this.jwtToken = jwtToken;
-
     }
 
     // getter et setter
