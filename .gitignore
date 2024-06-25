@@ -1,0 +1,33 @@
+# Fichiers IDE spécifiques (par exemple, IntelliJ IDEA ou Eclipse)
+.idea/
+*.iml
+*.ipr
+*.iws
+.project
+.classpath
+
+# Fichiers de configuration de build
+target/
+build/
+.gradle/
+!gradle/wrapper/gradle-wrapper.jar  # N'incluez que le wrapper Gradle
+
+# Fichiers de log
+logs/
+*.log
+
+# Fichiers temporaires
+*.tmp
+
+# Fichiers de sauvegarde
+*~
+
+# Fichiers spécifiques à Lombok
+delombok.config
+
+# Fichiers spécifiques à Maven
+log/
+
+# Fichiers de configuration pour différents systèmes d'exploitation
+.DS_Store
+Thumbs.db
