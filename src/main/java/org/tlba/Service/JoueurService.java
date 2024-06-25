@@ -2,6 +2,7 @@ package org.tlba.Service;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.tlba.DTO.JoueurDTO;
 import org.tlba.Repo.JoueurRepo;
 import org.tlba.Repo.TeamRepository;
 import org.tlba.entities.Joueur;
@@ -9,19 +10,25 @@ import org.tlba.entities.Team;
 
 import java.util.List;
 
-@Service
-public class JoueurService {
 
-    @Autowired
-    private JoueurRepo joueurRepo;
+public interface JoueurService {
 
-    public List<Joueur> getAllJoueurs() {
-        return joueurRepo.findAll();
-    }
 
-    public Joueur saveJoueur(Joueur joueur) {
-        return joueurRepo.save(joueur);
-    }
+    List<JoueurDTO> getAll();
+
+    JoueurDTO saveOrUpdate(JoueurDTO j) throws Exception;
+
+    JoueurDTO update(JoueurDTO j) throws Exception;
+
+    JoueurDTO findById(long id) throws Exception;
+
+    JoueurDTO findByNom(String nom) throws Exception;
+
+    void suppressionJoueur(long id);
+
+    List<JoueurDTO> getByTeamId(long id);
+
+
 
 
 }

@@ -1,32 +1,32 @@
-package org.tlba.entities;
+package org.tlba.DTO;
 
-import jakarta.persistence.*;
-import jdk.jfr.Percentage;
-import lombok.AllArgsConstructor;
-import lombok.Data;
-
-import java.util.HashSet;
 import java.util.Set;
 
-@Entity
-@Data
-@AllArgsConstructor
-@Table(name = "JOUEUR")
-public class Joueur {
-    @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
+public class JoueurDTO {
+
     private Long id;
-
     private String nom;
-
     private String prenom;
-
     private int age;
-
     private int numero;
+    private Set<Long> equipeIds; // Pour stocker les identifiants des équipes auxquelles le joueur appartient
 
-    @ManyToMany(mappedBy = "joueurs")
-    private Set<Team> equipes = new HashSet<>();
+    // Constructeurs, getters et setters
+
+    public JoueurDTO() {
+        // Constructeur par défaut
+    }
+
+    public JoueurDTO(Long id, String nom, String prenom, int age, int numero, Set<Long> equipeIds) {
+        this.id = id;
+        this.nom = nom;
+        this.prenom = prenom;
+        this.age = age;
+        this.numero = numero;
+        this.equipeIds = equipeIds;
+    }
+
+    // Getters et setters
 
     public Long getId() {
         return id;
@@ -68,11 +68,12 @@ public class Joueur {
         this.numero = numero;
     }
 
-    public Set<Team> getEquipes() {
-        return equipes;
+    public Set<Long> getEquipeIds() {
+        return equipeIds;
     }
 
-    public void setEquipes(Set<Team> equipes) {
-        this.equipes = equipes;
+    public void setEquipeIds(Set<Long> equipeIds) {
+        this.equipeIds = equipeIds;
     }
 }
+

@@ -1,35 +1,31 @@
-package org.tlba.entities;
+package org.tlba.DTO;
 
-import jakarta.persistence.*;
-import lombok.AllArgsConstructor;
-import lombok.Data;
-
-import java.util.HashSet;
 import java.util.Set;
 
-@Entity
-@Data
-@AllArgsConstructor
-@Table(name = "TEAM")
-public class Team {
-    @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
+public class TeamDTO {
+
     private Long id;
-
     private String name;
-
     private String categorie;
-
     private String niveau;
-
     private String coach;
+    private Set<Long> joueurIds; // Pour stocker les identifiants des joueurs dans l'équipe
 
-    @ManyToMany
-    @JoinTable(name = "equipe_joueur",
-            joinColumns = @JoinColumn(name = "equipe_id"),
-            inverseJoinColumns = @JoinColumn(name = "joueur_id"))
-    private Set<Joueur> joueurs = new HashSet<>();
 
+    public TeamDTO() {
+        // Constructeur par défaut
+    }
+
+    public TeamDTO(Long id, String name, String categorie, String niveau, String coach, Set<Long> joueurIds) {
+        this.id = id;
+        this.name = name;
+        this.categorie = categorie;
+        this.niveau = niveau;
+        this.coach = coach;
+        this.joueurIds = joueurIds;
+    }
+
+    // Getters et setters
 
     public Long getId() {
         return id;
@@ -71,11 +67,11 @@ public class Team {
         this.coach = coach;
     }
 
-    public Set<Joueur> getJoueurs() {
-        return joueurs;
+    public Set<Long> getJoueurIds() {
+        return joueurIds;
     }
 
-    public void setJoueurs(Set<Joueur> joueurs) {
-        this.joueurs = joueurs;
+    public void setJoueurIds(Set<Long> joueurIds) {
+        this.joueurIds = joueurIds;
     }
 }
