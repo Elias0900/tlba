@@ -14,7 +14,7 @@ import java.util.stream.Collectors;
 
 @Service
 @Transactional
-public class TeamServiceImpl implements TeamService {
+public class  TeamServiceImpl implements TeamService {
 
     @Autowired
     private TeamRepository teamRepository;
